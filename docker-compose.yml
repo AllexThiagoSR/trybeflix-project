@@ -1,0 +1,14 @@
+version: "3"
+services:
+  backend:
+    build: ./backend
+    container_name: trybeflix
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 3001:3001
+    environment:
+      PORT: 3001

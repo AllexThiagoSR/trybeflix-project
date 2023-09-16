@@ -1,8 +1,9 @@
 version: "3"
 services:
+
   backend:
     build: ./backend
-    container_name: trybeflix
+    container_name: backend
     tty: true
     stdin_open: true
     restart: always
@@ -12,3 +13,22 @@ services:
       - 3001:3001
     environment:
       PORT: 3001
+    command: dev
+    depends_on:
+      database:
+        condition: service_healthy
+  
+  database:
+    image: mysql:8.0.32
+    container_name: database
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    restart: 'always'
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
+      timeout: 10s
+      retries: 5
+    cap_add:
+      - SYS_NICE

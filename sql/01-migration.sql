@@ -6,12 +6,18 @@ CREATE TABLE genres (
   name VARCHAR(30) NOT NULL,
   PRIMARY KEY(id)
 ) ENGINE=INNODB;
+CREATE TABLE directors (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(70) NOT NULL,
+  PRIMARY KEY(id)
+) ENGINE=INNODB;
 CREATE TABLE movies (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
   release_year YEAR NOT NULL,
-  director VARCHAR(70) NOT NULL,
+  director_id INT NOT NULL,
   genre_id INT NOT NULL,
   PRIMARY KEY(id),
-  Foreign Key (genre_id) REFERENCES genres(id)
+  FOREIGN KEY (genre_id) REFERENCES genres(id),
+  FOREIGN KEY (director_id) REFERENCES directors(id)
 ) ENGINE=INNODB;

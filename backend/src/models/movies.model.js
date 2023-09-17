@@ -1,3 +1,11 @@
 const connection = require('./connection');
 
-module.exports = {};
+const getById = async (id) => {
+  const [[movie]] = await connection.execute(
+    'SELECT * FROM movies WHERE id = ?',
+    [id],
+  );
+  return movie;
+};
+
+module.exports = { getById };

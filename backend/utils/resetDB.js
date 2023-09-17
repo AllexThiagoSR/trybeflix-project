@@ -11,10 +11,17 @@ const fs = require('fs/promises');
 
 const resetDB = async () => {
   const migrationQuery = await fs.readFile(
-    '/home/allex/Trybe/monitoria/trybeflix-project/sql/01-migration.sql',
+    '../sql/01-migration.sql',
+    'utf8',
+  );
+  const seedQuery = await fs.readFile(
+    '../sql/02-seed.sql',
     'utf8',
   );
   for (const query of migrationQuery.split(';\n')) {
+    await connection.query(query);
+  }
+  for (const query of seedQuery.split(';\n')) {
     await connection.query(query);
   }
 };

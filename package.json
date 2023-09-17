@@ -1,0 +1,9 @@
+{
+  "name": "trybeflix",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd ./backend && npm start",
+    "test": "cd ./backend && npm test",
+    "dev": "cd ./backend && npm run dev"
+  }
+}

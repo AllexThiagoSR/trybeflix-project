@@ -4,6 +4,7 @@
   "scripts": {
     "start": "cd ./backend && npm start",
     "test": "cd ./backend && npm test",
-    "dev": "cd ./backend && npm run dev"
+    "dev": "cd ./backend && npm run dev",
+    "db:reset": "env $(cat .env) && cd ./backend && npm run db:reset"
   }
 }

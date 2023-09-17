@@ -7,7 +7,8 @@
     "start": "node src/server.js",
     "test": "mocha",
     "dev": "nodemon --inspect=0.0.0.0:9229 src/server.js",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json ."
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
+    "db:reset": "node ./utils/resetDB.js"
   },
   "keywords": [],
   "author": "",

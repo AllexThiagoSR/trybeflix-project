@@ -1,0 +1,4 @@
+DROP DATABASE IF EXISTS Trybeflix;
+CREATE DATABASE Trybeflix;
+USE Trybeflix;
+CREATE TABLE movies (id INT NOT NULL auto_increment,name VARCHAR(255) NOT NULL,release_year INT NOT NULL,director VARCHAR(70) NOT NULL,PRIMARY KEY(id)) ENGINE=INNODB;

@@ -10,4 +10,9 @@ const update = async (req, res) => {
   return res.status(status).json(data);
 };
 
-module.exports = { getById, update };
+const deleteMovie = async (req, res) => {
+  const { status, data } = await movieService.deleteMovie(req.params.id);
+  return res.status(status).json(data);
+};
+
+module.exports = { getById, update, deleteMovie };

@@ -33,6 +33,14 @@ const update = async (id, { name, directorId, releaseYear, genreId }) => {
     [name, directorId, releaseYear, genreId, id],
   );
   return affectedRows !== 0;
-}
+};
 
-module.exports = { getById, update };
+const deleteMovie = async (id) => {
+  const [{ affectedRows }] = await connection.execute(
+    'DELETE FROM movies WHERE id = ?',
+    [id]
+  );
+  return affectedRows !== 0;
+};
+
+module.exports = { getById, update, deleteMovie };

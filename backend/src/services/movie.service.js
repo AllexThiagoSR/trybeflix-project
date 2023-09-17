@@ -20,6 +20,18 @@ const update = async (id, payload) => {
   } catch (error) {
     return { status: 500, data: { message: 'Internal server error' } };
   }
-}
+};
 
-module.exports = { getById, update };
+const deleteMovie = async (id) => {
+  try {
+    const movie = await movieModel.getById(id);
+    if (!movie) return { status: 404, data: { message: 'Movie not found' } };
+    const deleted = await movieModel.deleteMovie(id);
+    if (!deleted) return { status: 400, data: { message: 'Something went wrong on deletion' } };
+    return { status: 200, data: { message: 'Successfully deleted' } };
+  } catch (error) {
+    return { status: 500, data: { message: 'Internal server error' } };
+  }
+};
+
+module.exports = { getById, update, deleteMovie };

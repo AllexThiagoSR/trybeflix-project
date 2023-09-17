@@ -5,4 +5,9 @@ const getById = async (req, res) => {
   return res.status(status).json(data);
 };
 
-module.exports = { getById };
+const update = async (req, res) => {
+  const { status, data } = await movieService.update(req.params.id, req.body);
+  return res.status(status).json(data);
+};
+
+module.exports = { getById, update };

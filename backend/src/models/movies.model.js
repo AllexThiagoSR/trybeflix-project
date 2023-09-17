@@ -19,4 +19,20 @@ const getById = async (id) => {
   return movie;
 };
 
-module.exports = { getById };
+const update = async (id, { name, directorId, releaseYear, genreId }) => {
+  const [{ affectedRows }] = await connection.execute(
+    `
+    UPDATE movies
+    SET 
+      name = ?,
+      director_id = ?,
+      release_year = ?,
+      genre_id = ?
+    WHERE id = ?;
+    `,
+    [name, directorId, releaseYear, genreId, id],
+  );
+  return affectedRows !== 0;
+}
+
+module.exports = { getById, update };

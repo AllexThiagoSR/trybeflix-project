@@ -14,9 +14,13 @@ const resetDB = async () => {
     '/home/allex/Trybe/monitoria/trybeflix-project/sql/01-migration.sql',
     'utf8',
   );
-  for (const query of migrationQuery.split('\n')) {
+  for (const query of migrationQuery.split(';\n')) {
     await connection.query(query);
   }
 };
 
-resetDB().then(() => console.log('OK'));
+const reset = () => {
+  resetDB();
+};
+
+module.exports = { reset };

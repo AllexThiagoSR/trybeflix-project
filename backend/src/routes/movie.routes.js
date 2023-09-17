@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { movieController } = require('../controllers/index');
+const { validateUpdate } = require('../middlewares/updateMovie.middleware');
 
 const router = Router();
 
@@ -7,6 +8,6 @@ router.get('/test', (_req, res) => res.status(200).json({ message: 'Tested' }));
 
 router.get('/:id', movieController.getById);
 
-router.put('/:id', movieController.update);
+router.put('/:id', validateUpdate, movieController.update);
 
 module.exports = router;

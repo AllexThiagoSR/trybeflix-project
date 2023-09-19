@@ -1,7 +1,8 @@
 const { Router } = require('express');
+const { movieController } = require('../controllers');
 
 const router = Router();
 
-router.get('/test', (req, res) => res.status(200).json({ message: 'Tested' }));
+router.get('/', movieController.getAll)
 
 module.exports = router;

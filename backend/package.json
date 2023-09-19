@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "mocha",
+    "test": "mocha tests/**/*.test.js --exit",
     "dev": "nodemon --inspect=0.0.0.0:9229 src/server.js",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
     "db:reset": "node -e \"require('./utils/resetDB.js').reset()\""
@@ -16,15 +16,15 @@
   "dependencies": {
     "express": "4.17.1",
     "express-rescue": "1.1.30",
-    "mysql2": "2.3.3",
-    "joi": "17.6.0"
+    "joi": "17.6.0",
+    "mysql2": "2.3.3"
   },
   "devDependencies": {
     "chai": "4.3.4",
     "chai-http": "4.3.0",
-    "mocha": "10.2.0",
-    "eslint-config-trybe-backend": "2.1.0",
     "eslint": "6.8.0",
+    "eslint-config-trybe-backend": "2.1.0",
+    "mocha": "10.2.0",
     "nodemon": "2.0.15",
     "sinon": "11.1.1",
     "sinon-chai": "3.7.0"

@@ -1,3 +1,10 @@
-const { movieModel } = require('./index')
+const { movieModel } = require('../models');
 
-module.exports = {};
+const getAll = async () => {
+  const movies = await movieModel.getAll();
+  return movies;
+};
+
+module.exports = {
+  getAll,
+};

@@ -4,11 +4,11 @@ const getById = async (id) => {
   const [[movie]] = await connection.execute(
     `
     SELECT
-      movies.id AS id,
-      movies.name AS name,
-      directors.name AS director,
-      release_year AS releaseYear,
-      genres.name AS genre
+      movies.id AS movie_id,
+      movies.name AS movie_name,
+      directors.name AS director_name,
+      release_year AS release_year,
+      genres.name AS genre_name
     FROM movies
     INNER JOIN directors ON director_id = directors.id
     INNER JOIN genres ON genre_id = genres.id

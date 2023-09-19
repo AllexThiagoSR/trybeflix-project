@@ -1,3 +1,12 @@
 const connection = require('./connection');
 
-module.exports = {};
+const getAll = async () => {
+  const [movies] = await connection.execute(
+    'SELECT * FROM movies',
+  );
+  return movies;
+}
+
+module.exports = {
+  getAll,
+};

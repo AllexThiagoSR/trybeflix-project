@@ -3,21 +3,21 @@ CREATE DATABASE Trybeflix;
 USE Trybeflix;
 CREATE TABLE genres (
   id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(30) NOT NULL,
+  name VARCHAR(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY(id)
-) ENGINE=INNODB;
+) ENGINE=InnoDB;
 CREATE TABLE directors (
   id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(70) NOT NULL,
+  name VARCHAR(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY(id)
-) ENGINE=INNODB;
+) ENGINE=InnoDB;
 CREATE TABLE movies (
   id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(255) NOT NULL,
+  name VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   release_year YEAR NOT NULL,
   director_id INT NOT NULL,
   genre_id INT NOT NULL,
   PRIMARY KEY(id),
   FOREIGN KEY (genre_id) REFERENCES genres(id),
   FOREIGN KEY (director_id) REFERENCES directors(id)
-) ENGINE=INNODB;
+) ENGINE=InnoDB;

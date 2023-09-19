@@ -3,6 +3,7 @@ const {
   GET_ALL_MOVIES_QUERY,
   GET_ALL_DIRECTORS_QUERY,
   GET_ALL_GENRES_QUERY,
+  INSERT_MOVIE_QUERY,
 } = require('./querys');
 
 const getAll = async () => {
@@ -20,8 +21,25 @@ const getGenres = async () => {
   return genres;
 };
 
+const createMovie = async (name, release_year, director_id, genre_id) => {
+  const [{ insertId }] = await connection.execute(INSERT_MOVIE_QUERY, [
+    name,
+    release_year,
+    director_id,
+    genre_id,
+  ]);
+  return {
+    movie_id: insertId,
+    name,
+    release_year,
+    director_id,
+    genre_id,
+  };
+};
+
 module.exports = {
   getAll,
   getDirectors,
   getGenres,
+  createMovie,
 };

@@ -18,6 +18,14 @@ const update = async (id, payload) => {
     if (!movie) return { status: 404, data: { message: 'Movie not found.' } };
     return { status: 200, data: { message: 'Successfully updated.', movie } };
   } catch (error) {
+    if (error.message.includes('Cannot add or update')) {
+      if (error.message.includes('director_id')) {
+        return { status: 404, data: { message: 'Director not found' } };
+      }
+      if (error.message.includes('genre_id')) {
+        return { status: 404, data: { message: 'Genre not found' } };
+      }
+    }
     return { status: 500, data: { message: 'Internal server error.' } };
   }
 };

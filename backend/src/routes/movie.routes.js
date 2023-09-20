@@ -12,4 +12,8 @@ router.put('/:id', validateUpdate, movieController.update);
 
 router.delete('/:id', movieController.deleteMovie);
 
+router.get('/', movieController.getAll);
+
+router.post('/', movieController.createMovie);
+
 module.exports = router;

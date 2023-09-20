@@ -9,7 +9,7 @@ const { movieModel } = require('../../src/models');
 
 chai.use(chaiHttp);
 
-describe('Testing the route GET /movies/:id', function() {
+describe('Testing the route DELETE /movies/:id', function() {
   beforeEach(sinon.restore);
 
   it('Deleting a existent movie', async function () {
@@ -17,8 +17,8 @@ describe('Testing the route GET /movies/:id', function() {
     sinon.stub(movieModel, 'getById').resolves(movieById);
 
     const response = await chai.request(app).delete('/movies/1');
-    expect(response).to.have.property('status', 200);
-    expect(response.body).to.be.deep.equal({ message: 'Successfully deleted.' });
+    expect(response).to.have.property('status', 204);
+    expect(response.body).to.be.deep.equal({});
   });
 
   it('Deleting a movie that don`t exists return a not found error', async function () {

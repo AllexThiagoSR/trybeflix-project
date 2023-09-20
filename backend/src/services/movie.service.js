@@ -36,7 +36,7 @@ const deleteMovie = async (id) => {
     if (!movie) return { status: 404, data: { message: 'Movie not found.' } };
     const deleted = await movieModel.deleteMovie(id);
     if (!deleted) return { status: 400, data: { message: 'Something went wrong on deletion.' } };
-    return { status: 200, data: { message: 'Successfully deleted.' } };
+    return { status: 204 };
   } catch (error) {
     return { status: 500, data: { message: 'Internal server error.' } };
   }

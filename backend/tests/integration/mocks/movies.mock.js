@@ -6,4 +6,12 @@ const movieById = {
   genre_name: 'Ficção Científica',
 };
 
-module.exports = { movieById };
+const updatedMovie = {
+  movie_id: 1,
+  movie_name: 'A ORIGEM',
+  release_year: 2010,
+  director_name: 'Christopher Nolan',
+  genre_name: 'Ação',
+}
+
+module.exports = { movieById, updatedMovie };
